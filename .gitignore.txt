@@ -1,0 +1,1 @@
+dir_to_ignore/Noticias_Frescas_Stor
