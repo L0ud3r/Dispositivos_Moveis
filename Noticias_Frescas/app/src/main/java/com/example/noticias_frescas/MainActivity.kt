@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_general,
                 R.id.economyFragment,
                 R.id.sportsFragment,
-                R.id.tecnologyFragment
+                R.id.tecnologyFragment,
+                R.id.bookmarksFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

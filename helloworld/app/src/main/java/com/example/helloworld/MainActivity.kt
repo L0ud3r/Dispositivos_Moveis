@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         //Variáveis que controlam os diferentes elementos do activity_main.xml
         val textViewHello = findViewById<TextView>(R.id.texto)
         val buttonTranslate = findViewById<Button>(R.id.button)
-        val buttonTranslateEng = findViewById<Button>(R.id.buttoneng)
+        val buttonT0ranslateEng = findViewById<Button>(R.id.buttoneng)
 
         //Ação de mexer no botão português
         val onButtonTouch : ((View)->Unit)? = {

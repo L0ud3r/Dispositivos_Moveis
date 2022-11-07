@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'ipca.example.mutiasnoticiasfrescas'
+    namespace 'com.example.noticias_frescas'
     compileSdk 32
 
     defaultConfig {
-        applicationId "ipca.example.mutiasnoticiasfrescas"
+        applicationId "com.example.noticias_frescas"
         minSdk 22
         targetSdk 32
         versionCode 1

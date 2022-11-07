@@ -1,5 +1,6 @@
 package com.example.noticias_frescas
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.noticias_frescas.ui.parsePubDate
 import com.example.noticias_frescas.ui.toServerFormat
@@ -59,7 +60,7 @@ interface ArticleDao {
     fun getAll() : List<Article>
 
     @Query("SELECT * FROM article WHERE url = :url")
-    fun getByUrl(url: String): Article
+    fun getByUrl(url: String): LiveData<Article>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(article: Article)
