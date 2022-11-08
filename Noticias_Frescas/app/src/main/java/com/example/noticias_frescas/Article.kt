@@ -1,9 +1,11 @@
 package com.example.noticias_frescas
 
+import androidx.annotation.Nullable
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.noticias_frescas.ui.parsePubDate
 import com.example.noticias_frescas.ui.toServerFormat
+import org.jetbrains.annotations.NotNull
 import org.json.JSONObject
 import java.util.*
 
@@ -15,13 +17,13 @@ class Article {
     var publishedAt : Date? = null
     var urlToImage  : String? = null
     @PrimaryKey
-    var url         : String? = null
+    var url         : String
 
     constructor(title: String?,
                 content: String?,
                 publishedAt: Date?,
                 urlToImage: String?,
-                url: String?) {
+                url: String) {
         this.title = title
         this.content = content
         this.publishedAt = publishedAt
