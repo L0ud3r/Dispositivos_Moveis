@@ -1,0 +1,31 @@
+Activities:
+	-> Main (DONE)
+	-> Helpers (DONE)
+	-> Converters (DONE)
+	-> Backend (DONE)
+	-> Article (DONE)
+	-> DataBase (DONE)
+	-> UI
+		-> ArticleWeb (DONE)
+		-> Bookmark (DONE)
+		-> Enconomy (DONE)
+		-> General (DONE)
+		-> Sports (DONE)
+		-> Technology (DONE)
+
+Layouts:
+	main (DONE)
+	article_web (DONE)
+	fragment_general (DONE)
+	row_article (DONE)
+	menu
+		-> btm_nav (DONE)
+		-> article (DONE)
+	navigation (DONE)
+
+
+
+
+Código a correr completo e sem bugs
+
+Listagem de articles não aparece, botões share e bookmark nao aparecem

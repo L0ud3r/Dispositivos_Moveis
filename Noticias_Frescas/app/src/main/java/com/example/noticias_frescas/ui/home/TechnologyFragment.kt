@@ -69,9 +69,9 @@ class TechnologyFragment : Fragment() {
             val imageViewArticle = rowView.findViewById<ImageView>(R.id.imageViewArticle)
 
             val article = articles[position]
-            textViewArticleTitle.text = article.titulo
-            textViewArticleBody.text = article.conteudo
-            textViewArticleDate.text = article.dataPublicacao?.toShort()
+            textViewArticleTitle.text = article.title
+            textViewArticleBody.text = article.content
+            textViewArticleDate.text = article.publishedAt?.toShort()
 
             article.urlToImage?.let {
                 Backend.fetchImage(lifecycleScope, it){ bitmap ->
@@ -81,7 +81,7 @@ class TechnologyFragment : Fragment() {
 
 
             rowView.setOnClickListener {
-                Log.d(MainActivity.TAG, "article:${article.titulo}")
+                Log.d(MainActivity.TAG, "article:${article.title}")
 
                 findNavController().navigate(
                     R.id.action_tecnologyFragment_to_articleWebDetailFragment,

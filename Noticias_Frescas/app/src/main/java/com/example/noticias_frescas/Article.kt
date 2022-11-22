@@ -10,19 +10,19 @@ import java.util.*
 class Article {
 
     //Attibutes da class Article
-    var titulo   : String? = null;
-    var conteudo   : String? = null;
-    var dataPublicacao   : Date? = null;
+    var title   : String? = null;
+    var content   : String? = null;
+    var publishedAt   : Date? = null;
     var urlToImage   : String? = null;
     @PrimaryKey
     var url   : String
 
     //Construtor
-    constructor(titulo: String?, conteudo :String?, dataPublicacao :Date?,
+    constructor(title: String?, content :String?, publishedAt :Date?,
                 urlToImage :String?, url :String){
-        this.titulo = titulo
-        this.conteudo = conteudo
-        this.dataPublicacao = dataPublicacao
+        this.title = title
+        this.content = content
+        this.publishedAt = publishedAt
         this.urlToImage = urlToImage
         this.url = url
     }
@@ -32,9 +32,9 @@ class Article {
         var jsonObject = JSONObject()
 
         //Inserir no josn object a informacao
-        jsonObject.put("titulo", titulo)
-        jsonObject.put("conteudo", conteudo)
-        jsonObject.put("dataPublicacao", dataPublicacao?.toServerFormat())
+        jsonObject.put("title", title)
+        jsonObject.put("content", content)
+        jsonObject.put("publishedAt", publishedAt?.toServerFormat())
         jsonObject.put("urlToImage", urlToImage)
         jsonObject.put("url", url)
 
@@ -47,9 +47,9 @@ class Article {
         //Função para recolher dados do Json para um Article
         fun fromJSON(jsonObject: JSONObject): Article{
             return Article(
-                jsonObject.getString("titulo"),
-                jsonObject.getString("conteudo"),
-                jsonObject.getString("dataPublicacao").parsePubDate(),
+                jsonObject.getString("title"),
+                jsonObject.getString("content"),
+                jsonObject.getString("publishedAt").parsePubDate(),
                 jsonObject.getString("urlToImage"),
                 jsonObject.getString("url"),
             )

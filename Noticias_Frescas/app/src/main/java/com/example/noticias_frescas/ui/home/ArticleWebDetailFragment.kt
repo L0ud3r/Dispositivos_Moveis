@@ -78,7 +78,7 @@ class ArticleWebDetailFragment : Fragment() {
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.putExtra(Intent.EXTRA_TEXT, article?.url)
                 intent.type = "text/plain"
-                val intentChooser = Intent.createChooser(intent, article?.titulo)
+                val intentChooser = Intent.createChooser(intent, article?.title)
                 startActivity(intentChooser)
                 return true
             }
