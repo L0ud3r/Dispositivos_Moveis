@@ -1,5 +1,3 @@
-//Ficheiro de backend que trabalha com API
-
 package com.example.noticias_frescas
 
 import android.graphics.Bitmap
@@ -14,11 +12,13 @@ import okhttp3.Request
 import org.json.JSONObject
 import java.io.IOException
 
-object Backend {
 
+object Backend {
+    //Chave da API
     private const val API_KEY = "1765f87e4ebc40229e80fd0f75b6416c"
 
-    private val client = OkHttpClient()
+    //Criação do cliente que estabelecera a ligacao HTTP
+    private var client = OkHttpClient()
 
     fun fetchTopHeadlines(scope: CoroutineScope,
                           country: String,
@@ -74,5 +74,4 @@ object Backend {
             }
         }
     }
-
 }

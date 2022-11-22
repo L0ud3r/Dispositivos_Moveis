@@ -1,9 +1,9 @@
-package com.example.noticias_frescas;
+package com.example.noticias_frescas
 
 import androidx.room.TypeConverter
 import java.util.*
 
-public class Converters {
+class Converters {
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }

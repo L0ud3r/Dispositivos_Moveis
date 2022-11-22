@@ -15,8 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-class ArticleWebDetailFragment : Fragment() {
 
+class ArticleWebDetailFragment : Fragment() {
     var article : Article? = null
     var articleOnDb : Article? = null
 
@@ -45,26 +45,30 @@ class ArticleWebDetailFragment : Fragment() {
 
         article?.url?.let {
             binding.webView.loadUrl(it)
-            AppDatabase.getDatabase(requireContext())?.articleDao()?.getByUrl(it)?.observe(viewLifecycleOwner, Observer { article ->
-                articleOnDb = article;
-                if(article == null){
+
+
+            AppDatabase.getDatabase(requireContext())
+                ?.articleDao()
+                ?.getByUrl(it)
+                ?.observe(viewLifecycleOwner, Observer { article ->
+                    articleOnDb = article
+                    if (article == null){
                         menuItem?.icon = resources.getDrawable(R.drawable.ic_baseline_bookmark_border_24)
-                    }
-                    else{
+                    }else{
                         menuItem?.icon = resources.getDrawable(R.drawable.ic_baseline_bookmark_24)
                     }
-            })
-        }
+                })
 
+        }
         setHasOptionsMenu(true)
+
     }
 
-    var menuItem: MenuItem? = null
+    var menuItem : MenuItem? = null
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_article, menu)
-
         menuItem = menu.getItem(1)
     }
 
@@ -74,13 +78,13 @@ class ArticleWebDetailFragment : Fragment() {
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.putExtra(Intent.EXTRA_TEXT, article?.url)
                 intent.type = "text/plain"
-                val intentChooser = Intent.createChooser(intent, article?.title)
+                val intentChooser = Intent.createChooser(intent, article?.titulo)
                 startActivity(intentChooser)
                 return true
             }
             R.id.action_save -> {
                 article?.let {
-                    lifecycleScope.launch(Dispatchers.IO){
+                    lifecycleScope.launch(Dispatchers.IO) {
                         if (articleOnDb == null) {
                             AppDatabase.getDatabase(requireContext())?.articleDao()?.insert(it)
                         }else{
@@ -113,4 +117,5 @@ class ArticleWebDetailFragment : Fragment() {
                 }
             }
     }
+
 }

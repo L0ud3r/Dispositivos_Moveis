@@ -1,6 +1,6 @@
 package com.example.noticias_frescas.ui.home
 
-import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.noticias_frescas.*
 import com.example.noticias_frescas.databinding.FragmentGeneralBinding
-import com.example.noticias_frescas.ui.toShort
 
 class GeneralFragment : Fragment() {
 
@@ -31,7 +31,18 @@ class GeneralFragment : Fragment() {
     ): View {
         _binding = FragmentGeneralBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Backend.fetchTopHeadlines(lifecycleScope, "pt","general"){
+            articles = it
+            adapter.notifyDataSetChanged()
         }
+
+        binding.listViewArticles.adapter = adapter
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -59,9 +70,9 @@ class GeneralFragment : Fragment() {
             val imageViewArticle = rowView.findViewById<ImageView>(R.id.imageViewArticle)
 
             val article = articles[position]
-            textViewArticleTitle.text = article.title
-            textViewArticleBody.text = article.content
-            textViewArticleDate.text = article.publishedAt?.toShort()
+            textViewArticleTitle.text = article.titulo
+            textViewArticleBody.text = article.conteudo
+            textViewArticleDate.text = article.dataPublicacao?.toShort()
 
             article.urlToImage?.let {
                 Backend.fetchImage(lifecycleScope, it){ bitmap ->
@@ -69,9 +80,8 @@ class GeneralFragment : Fragment() {
                 }
             }
 
-
             rowView.setOnClickListener {
-                Log.d(MainActivity.TAG, "article:${article.title}")
+                Log.d(MainActivity.TAG, "article:${article.titulo}")
 
                 findNavController().navigate(
                     R.id.action_navigation_home_to_articleWebDetailFragment,
@@ -79,10 +89,6 @@ class GeneralFragment : Fragment() {
                         putString(ArticleWebDetailFragment.ARTICLE_JSON_STRING,article.toJSON().toString())
                     }
                 )
-
-                //val intent = Intent(requireContext(), ArticleWebDetailActivity::class.java)
-                //intent.putExtra(EXTRA_ARTICLE, article.toJSON().toString())
-                //startActivity(intent)
             }
 
             return rowView

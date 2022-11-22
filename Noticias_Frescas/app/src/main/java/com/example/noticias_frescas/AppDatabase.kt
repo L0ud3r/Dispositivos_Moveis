@@ -1,5 +1,3 @@
-//Linkagem à base de dados
-
 package com.example.noticias_frescas
 
 import android.content.Context

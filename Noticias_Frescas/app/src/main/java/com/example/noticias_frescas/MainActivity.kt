@@ -1,5 +1,3 @@
-//Ficheiro Main
-
 package com.example.noticias_frescas
 
 import android.os.Bundle
@@ -12,14 +10,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.noticias_frescas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    //business
-    //entertainment
-    //general
-    //health
-    //science
-    //sports
-    //technology
 
     private lateinit var binding: ActivityMainBinding
 
@@ -39,8 +29,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_general,
                 R.id.economyFragment,
                 R.id.sportsFragment,
-                R.id.tecnologyFragment,
+                R.id.technologyFragment,
                 R.id.bookmarksFragment
+
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -51,3 +42,4 @@ class MainActivity : AppCompatActivity() {
         const val TAG = "MainActivity"
     }
 }
+

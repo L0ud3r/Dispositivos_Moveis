@@ -8,16 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.noticias_frescas.*
 import com.example.noticias_frescas.databinding.FragmentGeneralBinding
-import com.example.noticias_frescas.ui.toShort
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class BookmarksFragment : Fragment() {
 
@@ -39,14 +36,13 @@ class BookmarksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch(Dispatchers.IO){
-            AppDatabase.getDatabase(requireContext())?.articleDao()?.getAll().let {
-                lifecycleScope.launch(Dispatchers.IO){
-                    articles = it as ArrayList<Article>
-                    adapter.notifyDataSetChanged()
-                }
-            }
-        }
+        AppDatabase.getDatabase(requireContext())
+            ?.articleDao()
+            ?.getAll()
+            ?.observe(viewLifecycleOwner, Observer {
+                articles = it as ArrayList<Article>
+                adapter.notifyDataSetChanged()
+            })
 
         binding.listViewArticles.adapter = adapter
     }
@@ -77,9 +73,9 @@ class BookmarksFragment : Fragment() {
             val imageViewArticle = rowView.findViewById<ImageView>(R.id.imageViewArticle)
 
             val article = articles[position]
-            textViewArticleTitle.text = article.title
-            textViewArticleBody.text = article.content
-            textViewArticleDate.text = article.publishedAt?.toShort()
+            textViewArticleTitle.text = article.titulo
+            textViewArticleBody.text = article.conteudo
+            textViewArticleDate.text = article.dataPublicacao?.toShort()
 
             article.urlToImage?.let {
                 Backend.fetchImage(lifecycleScope, it){ bitmap ->
@@ -89,7 +85,7 @@ class BookmarksFragment : Fragment() {
 
 
             rowView.setOnClickListener {
-                Log.d(MainActivity.TAG, "article:${article.title}")
+                Log.d(MainActivity.TAG, "article:${article.titulo}")
 
                 findNavController().navigate(
                     R.id.action_bookmarksFragment_to_articleWebDetailFragment,

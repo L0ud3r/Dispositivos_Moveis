@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">Noticias_Frescas</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Noticias Frescas</string>
+    <string name="title_general">General</string>
+    <string name="title_economy">Economy</string>
+    <string name="title_sports">Sports</string>
+    <string name="title_tecnology">Tecnology</string>
     <string name="title_bookmarks">Bookmarks</string>
 </resources>

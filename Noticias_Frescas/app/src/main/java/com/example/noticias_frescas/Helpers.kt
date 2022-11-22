@@ -1,4 +1,4 @@
-package com.example.noticias_frescas.ui
+package com.example.noticias_frescas;
 
 import java.text.SimpleDateFormat
 import java.util.*

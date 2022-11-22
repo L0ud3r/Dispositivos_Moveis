@@ -15,21 +15,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.noticias_frescas.*
 import com.example.noticias_frescas.databinding.FragmentGeneralBinding
-import com.example.noticias_frescas.ui.toShort
 
 class EconomyFragment : Fragment() {
-
     private var _binding: FragmentGeneralBinding? = null
     private val binding get() = _binding!!
 
     var articles = arrayListOf<Article>()
     val adapter = ArticlesAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
+
         _binding = FragmentGeneralBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -72,9 +69,9 @@ class EconomyFragment : Fragment() {
             val imageViewArticle = rowView.findViewById<ImageView>(R.id.imageViewArticle)
 
             val article = articles[position]
-            textViewArticleTitle.text = article.title
-            textViewArticleBody.text = article.content
-            textViewArticleDate.text = article.publishedAt?.toShort()
+            textViewArticleTitle.text = article.titulo
+            textViewArticleBody.text = article.conteudo
+            textViewArticleDate.text = article.dataPublicacao?.toShort()
 
             article.urlToImage?.let {
                 Backend.fetchImage(lifecycleScope, it){ bitmap ->
@@ -84,7 +81,7 @@ class EconomyFragment : Fragment() {
 
 
             rowView.setOnClickListener {
-                Log.d(MainActivity.TAG, "article:${article.title}")
+                Log.d(MainActivity.TAG, "article:${article.titulo}")
 
                 findNavController().navigate(
                     R.id.action_economyFragment_to_articleWebDetailFragment,
@@ -93,13 +90,11 @@ class EconomyFragment : Fragment() {
                     }
                 )
 
-                //val intent = Intent(requireContext(), ArticleWebDetailActivity::class.java)
-                //intent.putExtra(EXTRA_ARTICLE, article.toJSON().toString())
-                //startActivity(intent)
             }
 
             return rowView
         }
 
     }
+
 }

@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_general"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_input_get"
+        android:title="@string/title_general" />
     <item
         android:id="@+id/economyFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
-    <item android:title="sportsFragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_lock_idle_charging"
+        android:title="@string/title_economy" />
     <item
-        android:id="@+id/tecnologyFragment"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
-
+        android:id="@+id/sportsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/title_sports" />
+    <item
+        android:id="@+id/technologyFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/title_tecnology" />
     <item
         android:id="@+id/bookmarksFragment"
-        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/btn_star_big_on"
         android:title="@string/title_bookmarks" />
 
 </menu>
