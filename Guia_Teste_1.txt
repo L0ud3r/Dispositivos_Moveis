@@ -1,0 +1,19 @@
+Passo 1: Criar Class com atributos + constructor
+Passo 2: Fazer interface com IDs devidamente atribuidos + tratar do layout
+Passo 3: Criar adapter (inner class X : BaseAdapter() com generate methods)
+	-> retornar tamanho
+	-> retornar objeto na posiçao especifica
+	-> retornar id do objeto na posiçao especifica (caso nao tenha id, colocar return 0L)
+	-> getview: definir como é que a Class vai receber os campos do layout
+Passo 4: Criar alguns Objetos Hardcode Teste e ver se está tudo correto
+Passo 5: Criar segunda interface (ver detalhes, adicionar ou editar)
+	-> Adicionar Activity (Empty Activity)
+	-> Fazer o Layout
+	-> Tratar da Acticity nova
+		--> Details:
+			---> Ver codigo Duarte (getView fica com onClickListener)
+		--> Info change
+			---> Ver codigo stor
+Passo 6: Criar pasta menu e layout de menu e adicionar botoes desejados
+	-> !!! Os botoes são MenuItems !!!	
+	
