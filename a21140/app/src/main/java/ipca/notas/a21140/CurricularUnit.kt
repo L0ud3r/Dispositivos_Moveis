@@ -4,7 +4,6 @@ package ipca.notas.a21140
 class CurricularUnit {
     var name : String? = null
     var year : Int? = null
-    //Ou float
     var grade : Double? = null
 
     constructor(name: String?, year: Int?, grade: Double?) {

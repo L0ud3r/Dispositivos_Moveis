@@ -15,5 +15,4 @@ Passo 5: Criar segunda interface (ver detalhes, adicionar ou editar)
 		--> Info change
 			---> Ver codigo stor
 Passo 6: Criar pasta menu e layout de menu e adicionar botoes desejados
-	-> !!! Os botoes são MenuItems !!!	
-	
+	-> !!! Os botoes são MenuItems !!!
