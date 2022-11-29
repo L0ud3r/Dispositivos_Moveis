@@ -1,7 +1,6 @@
 package ipca.notas.a21140
 
 import android.app.Activity
-import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -15,16 +14,14 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
 
     val curricilarUnits = arrayListOf<CurricularUnit>()
 
     val adapter = GradesAdapter()
-    var getResult : ActivityResultLauncher<Intent>? = null
+    var getNewUC : ActivityResultLauncher<Intent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,17 +37,17 @@ class MainActivity : AppCompatActivity() {
         listViewGrades.adapter = adapter
 
         // Receiver -> Exercício 5/6
-         getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if(it.resultCode == Activity.RESULT_OK){
-                    val name = it.data?.getStringExtra("name")
-                    val year = it.data?.getIntExtra("year", 0)
-                    val grade = it.data?.getDoubleExtra("grade", 0.0)
+        getNewUC = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if(it.resultCode == Activity.RESULT_OK){
+                val name = it.data?.getStringExtra("name")
+                val year = it.data?.getIntExtra("year", 0)
+                val grade = it.data?.getDoubleExtra("grade", 0.0)
 
-                    curricilarUnits.add(CurricularUnit(name, year, grade))
+                curricilarUnits.add(CurricularUnit(name, year, grade))
 
-                    adapter.notifyDataSetChanged()
-                }
+                adapter.notifyDataSetChanged()
             }
+        }
     }
 
     //Exercicio 5 e 6
@@ -63,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         super.onOptionsItemSelected(item)
         when(item.itemId){
             R.id.action_add -> {
-                getResult?.launch(Intent(this, AddUCActivity::class.java))
+                getNewUC?.launch(Intent(this, AddUCActivity::class.java))
                 return true
             }
             R.id.action_average-> {
