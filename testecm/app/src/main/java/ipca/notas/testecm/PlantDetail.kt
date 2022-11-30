@@ -44,7 +44,6 @@ class PlantDetail : AppCompatActivity() {
             type = "text/plain"
         }
 
-        //Add botao share a esta activity
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
         return true
