@@ -11,9 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.GestureDetectorCompat
 
-class HorizontalSwitch : View, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener  {
-    private var mDetector: GestureDetectorCompat = GestureDetectorCompat(context, this)
-
+class HorizontalSwitch : View  {
     //Construtores obrigatórios
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -25,8 +23,10 @@ class HorizontalSwitch : View, GestureDetector.OnGestureListener, GestureDetecto
 
     //Variáveis que sejam úteis a usar para a interação com a view
     var isOn = false
+    //Variavel para armazenar o isOn de forma a ter acesso na Activity
     private var onStateChanged : ((Boolean) -> Unit)? = null
 
+    //Metodo que tem acesso ao onStateChanged na Activity
     fun setOnStateChanged(onStateChanged : ((Boolean) -> Unit)){
         this.onStateChanged = onStateChanged
     }
@@ -66,60 +66,28 @@ class HorizontalSwitch : View, GestureDetector.OnGestureListener, GestureDetecto
         canvas?.drawText("On", width / 2f, (height - (margin + paint.textSize)), paint)
     }
 
+    //
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        return if(mDetector.onTouchEvent(event))
-            true
-        else
-            super.onTouchEvent(event)
-    }
-    override fun onDown(e: MotionEvent?): Boolean {
-        return true
-    }
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                if(event.y > height / 2){
+                    isOn = true
+                    //Muda o onStateChanged que pode ser usado na activity
+                    onStateChanged?.invoke(isOn)
+                    //Atualiza a View
+                    invalidate()
 
-    override fun onShowPress(e: MotionEvent?) {
-        onStateChanged?.invoke(isOn)
-        postInvalidate()
-    }
+                    return true
+                }
+                else{
+                    isOn = false
+                    onStateChanged?.invoke(isOn)
+                    invalidate()
 
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        onStateChanged?.invoke(isOn)
-        postInvalidate()
-        return true
-    }
-
-    override fun onScroll(
-        e1: MotionEvent?,
-        e2: MotionEvent?,
-        distanceX: Float,
-        distanceY: Float
-    ): Boolean {
-        return true
-    }
-
-    override fun onLongPress(e: MotionEvent?) {
-
-    }
-
-    override fun onFling(
-        e1: MotionEvent,
-        e2: MotionEvent,
-        velocityX: Float,
-        velocityY: Float
-    ): Boolean {
-        return true
-    }
-
-    override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-        onStateChanged?.invoke(isOn)
-        postInvalidate()
-        return true
-    }
-
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
-        return true
-    }
-
-    override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
-        return true
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

@@ -14,7 +14,7 @@ class HorizontalSwitchActivity : AppCompatActivity() {
 
         val switch = findViewById<HorizontalSwitch>(R.id.horizontalSwitch)
 
-        switch.setOnStateChanged {
+        switch.setOnStateChanged{
             if (it){
                 findViewById<TextView>(R.id.textViewOnOff).text = "Ligado"
             }else{
