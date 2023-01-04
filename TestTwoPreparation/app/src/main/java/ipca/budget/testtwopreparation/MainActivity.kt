@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.hSwitchButton).setOnClickListener{
+            startActivity(Intent(this@MainActivity, HorizontalSwitchActivity::class.java))
+        }
 
         findViewById<Button>(R.id.buttonSlider).setOnClickListener{
             startActivity(Intent(this@MainActivity, VerticalSwitchActivity::class.java))

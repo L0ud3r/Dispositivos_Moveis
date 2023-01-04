@@ -43,7 +43,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/verticalSlider2"
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <TextView
@@ -59,11 +59,11 @@
         android:id="@+id/buttonSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="Switch"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Switch
         android:id="@+id/locker"
@@ -84,5 +84,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/sliderValue2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/hSwitcherButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Touch Switch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,15 +44,15 @@ data class ClienteModel(
             return ClienteModel(
                 jsonObject.getInt("id_cliente"),
                 jsonObject.getInt("id_ginasio"),
-                jsonObject.optInt("id_plano_nutricional", -1),
+                jsonObject.optInt("id_plano_nutricional"),
                 jsonObject.getString("nome"),
                 jsonObject.getString("mail"),
                 jsonObject.getInt("telemovel"),
                 jsonObject.getString("pass_salt"),
                 jsonObject.getString("pass_hash"),
-                jsonObject.optDouble("peso", -1.0),
-                jsonObject.optInt("altura", -1),
-                jsonObject.optDouble("gordura", -1.0),
+                jsonObject.optDouble("peso"),
+                jsonObject.optInt("altura"),
+                jsonObject.optDouble("gordura"),
                 jsonObject.getString("foto_perfil"),
                 jsonObject.getString("estado")
             )

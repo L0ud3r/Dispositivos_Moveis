@@ -22,6 +22,10 @@ class VerticalSwitchActivity : AppCompatActivity() {
             startActivity(Intent(this@VerticalSwitchActivity, MainActivity::class.java))
         }
 
+        findViewById<Button>(R.id.hSwitcherButton).setOnClickListener{
+            startActivity(Intent(this@VerticalSwitchActivity, HorizontalSwitchActivity::class.java))
+        }
+
         locker.setOnCheckedChangeListener { compoundButton, b ->
             if (locker.isChecked) {
                 verticalSliderLeft.percent = verticalSliderRight.percent
