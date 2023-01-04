@@ -23,6 +23,7 @@ class HorizontalSwitch : View  {
 
     //Variáveis que sejam úteis a usar para a interação com a view
     var isOn = false
+
     //Variavel para armazenar o isOn de forma a ter acesso na Activity
     private var onStateChanged : ((Boolean) -> Unit)? = null
 
@@ -66,9 +67,10 @@ class HorizontalSwitch : View  {
         canvas?.drawText("On", width / 2f, (height - (margin + paint.textSize)), paint)
     }
 
-    //
+    //Ao toque (para diferentes tipos de toque)
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
+            //NO CLICK
             MotionEvent.ACTION_DOWN -> {
                 if(event.y > height / 2){
                     isOn = true
