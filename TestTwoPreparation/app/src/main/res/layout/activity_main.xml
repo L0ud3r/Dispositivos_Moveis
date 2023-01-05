@@ -29,7 +29,7 @@
         android:id="@+id/buttonSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Slider"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,9 +39,18 @@
         android:id="@+id/hSwitchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="Touch Switch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light"
+        app:layout_constraintBottom_toBottomOf="@+id/hSwitchButton"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSlider"
+        app:layout_constraintStart_toEndOf="@+id/hSwitchButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

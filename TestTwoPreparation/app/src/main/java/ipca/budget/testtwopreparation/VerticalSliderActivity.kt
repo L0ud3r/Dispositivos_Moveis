@@ -3,13 +3,14 @@ package ipca.budget.testtwopreparation
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import ipca.budget.testtwopreparation.R
+import androidx.core.widget.doOnTextChanged
 import ipca.budget.testtwopreparation.views.VerticalSlider
 
-class VerticalSwitchActivity : AppCompatActivity() {
+class VerticalSliderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_slider)
@@ -17,13 +18,22 @@ class VerticalSwitchActivity : AppCompatActivity() {
         val verticalSliderLeft = findViewById<VerticalSlider>(R.id.verticalSlider)
         val verticalSliderRight = findViewById<VerticalSlider>(R.id.verticalSlider2)
         val locker = findViewById<Switch>(R.id.locker)
+        val valueInput = findViewById<EditText>(R.id.inputValue)
+
+        valueInput.doOnTextChanged{ text, start, before, count ->
+            if(!valueInput.text.isEmpty()) verticalSliderRight.percent = valueInput.text.toString().toFloat()
+        }
+
+        findViewById<Button>(R.id.buttonlight).setOnClickListener{
+            startActivity(Intent(this@VerticalSliderActivity, LightBrightnessActivity::class.java))
+        }
 
         findViewById<Button>(R.id.buttonSwitch).setOnClickListener{
-            startActivity(Intent(this@VerticalSwitchActivity, MainActivity::class.java))
+            startActivity(Intent(this@VerticalSliderActivity, MainActivity::class.java))
         }
 
         findViewById<Button>(R.id.hSwitcherButton).setOnClickListener{
-            startActivity(Intent(this@VerticalSwitchActivity, HorizontalSwitchActivity::class.java))
+            startActivity(Intent(this@VerticalSliderActivity, HorizontalSwitchActivity::class.java))
         }
 
         locker.setOnCheckedChangeListener { compoundButton, b ->

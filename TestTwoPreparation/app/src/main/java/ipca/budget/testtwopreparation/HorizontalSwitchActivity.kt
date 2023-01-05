@@ -22,8 +22,12 @@ class HorizontalSwitchActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.buttonLightChange).setOnClickListener{
+            startActivity(Intent(this@HorizontalSwitchActivity, LightBrightnessActivity::class.java))
+        }
+
         findViewById<Button>(R.id.Slider).setOnClickListener{
-            startActivity(Intent(this@HorizontalSwitchActivity, VerticalSwitchActivity::class.java))
+            startActivity(Intent(this@HorizontalSwitchActivity, VerticalSliderActivity::class.java))
         }
 
         findViewById<Button>(R.id.SwitcherBtn).setOnClickListener{
