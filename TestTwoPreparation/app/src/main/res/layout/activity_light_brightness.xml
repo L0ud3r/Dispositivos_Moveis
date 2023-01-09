@@ -56,4 +56,13 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button" />
 
+    <ipca.budget.testtwopreparation.views.TestView
+        android:id="@+id/testView"
+        android:layout_width="0dp"
+        android:layout_height="285dp"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="@+id/lightBrightnessView"
+        app:layout_constraintStart_toStartOf="@+id/lightBrightnessView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValue" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

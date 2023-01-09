@@ -15,8 +15,6 @@ class LightBrightnessView : View {
 
     var touchY = 0F
 
-
-
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -58,8 +56,6 @@ class LightBrightnessView : View {
         paint.style = Paint.Style.FILL
 
         canvas?.drawRect(rect2, paint )
-
-
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
