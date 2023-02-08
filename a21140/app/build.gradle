@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'ipca.notas.a21140'
+    namespace 'ipca.teste.a21140'
     compileSdk 32
 
     defaultConfig {
-        applicationId "ipca.notas.a21140"
+        applicationId "ipca.teste.a21140"
         minSdk 22
         targetSdk 32
         versionCode 1
